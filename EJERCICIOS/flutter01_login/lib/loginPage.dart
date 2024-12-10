@@ -17,7 +17,7 @@ class LoginPage extends StatelessWidget {
           children: [
  
             Container(
-              padding: EdgeInsets.only(top: 80),
+              padding: const EdgeInsets.only(top: 80),
 
               child: const Column(
                 children: [
@@ -35,84 +35,82 @@ class LoginPage extends StatelessWidget {
               )
             ),
 
-            Container(
-              child: Column(
-
-                children: [
-
-                  Container(
-                    width: 230,
-                    margin: EdgeInsets.only(bottom: 20),
-
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.only(top: 10, bottom: 10),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+            Column(
+            
+              children: [
+            
+                Container(
+                  width: 230,
+                  margin: const EdgeInsets.only(bottom: 20),
+            
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.only(top: 10, bottom: 10),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+                    ),
+                    child: const Text('Sign Up',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFE62F16),
                       ),
-                      child: const Text('Sign Up',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFFE62F16),
-                        ),
+                    )
+                  ),
+                ),
+            
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                
+                  children: [
+                    const Text('Already have a Path account?',
+                      style: TextStyle(
+                        color: Color.fromRGBO(255, 255, 255, 0.634),
                       )
                     ),
-                  ),
-
-                  Container(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-
-                      children: [
-                        const Text('Already have a Path account?',
+                
+                    Container(
+                      width: 230,
+                      margin: const EdgeInsets.only(top: 5, bottom: 22),
+                
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromRGBO(230, 47, 22, 1),
+                          padding: const EdgeInsets.only(top: 10, bottom: 10),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                          side: const BorderSide(width: 1.0, color: Color.fromRGBO(255, 255, 255, 0.634))
+                        ),
+                        child: const Text('Log In',
                           style: TextStyle(
+                            fontSize: 20,
                             color: Color.fromRGBO(255, 255, 255, 0.634),
-                          )
-                        ),
-
-                        Container(
-                          width: 230,
-                          margin: EdgeInsets.only(top: 5, bottom: 22),
-
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromRGBO(230, 47, 22, 1),
-                              padding: EdgeInsets.only(top: 10, bottom: 10),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                              side: BorderSide(width: 1.0, color: Color.fromRGBO(255, 255, 255, 0.634))
-                            ),
-                            child: const Text('Log In',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Color.fromRGBO(255, 255, 255, 0.634),
-                              ),
-                            )
-                          )
-                        ),
-
-                        RichText(
-                          textAlign: TextAlign.center,
-                          text: const TextSpan(text: "By using Path, you agree to Path's \n",
-                            style: TextStyle(color: Color.fromRGBO(255, 255, 255, 0.634)),
-                            children: [
-                              TextSpan(text: "Terms of Use",
-                                style: TextStyle(color: Colors.white, decoration: TextDecoration.underline)),
-                              TextSpan(text: " and ",
-                                style: TextStyle(color: Color.fromRGBO(255, 255, 255, 0.634))),
-                              TextSpan(text: "Privacy Policy",
-                                style: TextStyle(color: Colors.white, decoration: TextDecoration.underline)),
-                            ]),
+                          ),
                         )
-
-                      ],
+                      )
+                    ),
+                
+                    RichText(
+                      textAlign: TextAlign.center,
+                      text: const TextSpan(text: "By using Path, you agree to Path's \n",
+                        style: TextStyle(color: Color.fromRGBO(255, 255, 255, 0.634)),
+                        children: [
+                          TextSpan(text: "Terms of Use",
+                            style: TextStyle(color: Colors.white, decoration: TextDecoration.underline)),
+                          TextSpan(text: " and ",
+                            style: TextStyle(color: Color.fromRGBO(255, 255, 255, 0.634))),
+                          TextSpan(text: "Privacy Policy",
+                            style: TextStyle(color: Colors.white, decoration: TextDecoration.underline)),
+                          TextSpan(text: ".",
+                            style: TextStyle(color: Color.fromRGBO(255, 255, 255, 0.634)))
+                        ]),
                     )
-                  )
-
-                ],
-              )
+                
+                  ],
+                )
+            
+              ],
             )
 
           ],
