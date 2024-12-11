@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_const
-
 import 'package:flutter/material.dart';
 
 class ListaHorizontal extends StatelessWidget {
@@ -13,7 +11,6 @@ class ListaHorizontal extends StatelessWidget {
         width: double.infinity,
 
         child: Column(
-          //mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
 
           children: [
