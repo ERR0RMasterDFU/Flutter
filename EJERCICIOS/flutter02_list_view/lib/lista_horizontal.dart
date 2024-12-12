@@ -45,20 +45,19 @@ class ListaHorizontal extends StatelessWidget {
             ),
 
             SizedBox(
-              
-              height: 700,
+              height: 648,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
 
                   Container(
-                    padding: const EdgeInsets.only(top: 40.0, left: 40.0),
-                    height: 600,
+                    padding: const EdgeInsets.only(top: 30.0, left: 40.0),
+                    height: 800,
                     child: Column(
                       mainAxisSize: MainAxisSize.min, // Asegura que el contenido no desborde
                       children: [
                         Image.asset('assets/jonathan.jpg', 
-                          width: 150, height: 550, 
+                          width: 140, height: 510, 
                           scale: 1, // Reduce el factor de escala interno para hacerla más grande
                           fit: BoxFit.cover,
                           
@@ -78,13 +77,13 @@ class ListaHorizontal extends StatelessWidget {
                   ),
 
                   Container(
-                    padding: const EdgeInsets.only(top: 40.0, left: 20.0),
-                    height: 600,
+                    padding: const EdgeInsets.only(top: 30.0, left: 20.0),
+                    height: 800,
                     child: Column(
                       mainAxisSize: MainAxisSize.min, // Asegura que el contenido no desborde
                       children: [
                         Image.asset('assets/joseph.jpg', 
-                          width: 150, height: 550, 
+                          width: 140, height: 510, 
                           scale: 1, // Reduce el factor de escala interno para hacerla más grande
                           fit: BoxFit.cover,
                           
@@ -104,13 +103,13 @@ class ListaHorizontal extends StatelessWidget {
                   ),
 
                   Container(
-                    padding: const EdgeInsets.only(top: 40.0, left: 20.0),
-                    height: 600,
+                    padding: const EdgeInsets.only(top: 30.0, left: 20.0),
+                    height: 800,
                     child: Column(
                       mainAxisSize: MainAxisSize.min, // Asegura que el contenido no desborde
                       children: [
                         Image.asset('assets/jotaro.jpg', 
-                          width: 150, height: 550, 
+                          width: 140, height: 510, 
                           scale: 1, // Reduce el factor de escala interno para hacerla más grande
                           fit: BoxFit.cover,
                           
@@ -130,13 +129,13 @@ class ListaHorizontal extends StatelessWidget {
                   ),
 
                   Container(
-                    padding: const EdgeInsets.only(top: 40.0, left: 20.0),
-                    height: 600,
+                    padding: const EdgeInsets.only(top: 30.0, left: 20.0),
+                    height: 800,
                     child: Column(
                       mainAxisSize: MainAxisSize.min, // Asegura que el contenido no desborde
                       children: [
                         Image.asset('assets/josuke.jpg', 
-                          width: 150, height: 550, 
+                          width: 140, height: 510, 
                           scale: 1, // Reduce el factor de escala interno para hacerla más grande
                           fit: BoxFit.cover,
                           
@@ -156,13 +155,13 @@ class ListaHorizontal extends StatelessWidget {
                   ),
 
                   Container(
-                    padding: const EdgeInsets.only(top: 40.0, left: 20.0, right: 40.0),
-                    height: 600,
+                    padding: const EdgeInsets.only(top: 30.0, left: 20.0, right: 40.0),
+                    height: 800,
                     child: Column(
                       mainAxisSize: MainAxisSize.min, // Asegura que el contenido no desborde
                       children: [
                         Image.asset('assets/giorno.jpg', 
-                          width: 150, height: 550, 
+                          width: 140, height: 510, 
                           scale: 1, // Reduce el factor de escala interno para hacerla más grande
                           fit: BoxFit.cover,
                           
