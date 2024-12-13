@@ -57,44 +57,58 @@ class _PeopleScreenState extends State<PeopleScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
+          
           children: [
 
-            Container(
-              padding: const EdgeInsets.only(left: 30.0, bottom: 5.0),
-              child: const Text("Buscar",
+            const Padding(
+              padding: EdgeInsets.only(left: 30.0, bottom: 5.0),
+              child: Text("Buscar",
                 style: TextStyle(
-                    fontSize: 35,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w900),
+                  fontSize: 35,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w900,
+                ),
               ),
             ),
 
-            Container(
-              padding: const EdgeInsets.only(left: 30.0, right: 30.0, bottom: 30.0),
-              child: const SearchBar(),
+            const Padding(
+              padding: EdgeInsets.only(left: 30.0, right: 30.0, bottom: 30.0),
+              child: SearchBar(),
             ),
 
-            Container(
-              padding: const EdgeInsets.only(left: 30.0, right: 30.0),
-              child: FutureBuilder<PeopleResponse>(
-                future: peopleResponse,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return _buildPeopleList(context, snapshot.data!);
-                  } else if (snapshot.hasError) {
-                    return Text('${snapshot.error}');
-                  }
-                  // By default, show a loading spinner.
-                  return const Center(child: CircularProgressIndicator());
-                }
-              )
-            )
-            
+            Expanded(
+              // Expanded debe estar dentro de Column directamente
+              child: Padding(
+                padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+                child: FutureBuilder<PeopleResponse>(
+                  future: peopleResponse,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else if (snapshot.hasError) {
+                      return Center(
+                        child: Text(
+                          '${snapshot.error}',
+                          style: const TextStyle(color: Colors.red),
+                        ),
+                      );
+                    } else if (snapshot.hasData) {
+                      return _buildPeopleList(context, snapshot.data!);
+                    } else {
+                      return const Center(child: Text('No data available'));
+                    }
+                  },
+                ),
+              ),
+            ),
+
           ],
+
         ),
       ),
     );
   }
+
 
   Future<PeopleResponse> getPeople() async {
     final response = await http.get(Uri.parse('https://swapi.dev/api/people'));
@@ -126,22 +140,48 @@ class _PeopleScreenState extends State<PeopleScreen> {
   }*/
   Widget _buildPeopleList(BuildContext context, PeopleResponse peopleResponse) {
     return ListView.builder(
-        itemCount: peopleResponse.results!.length,
-        itemBuilder: (context, index) {
-          return _buildPeopleItem(context, peopleResponse.results![index]);
-        });
+      scrollDirection: Axis.horizontal,
+      itemCount: peopleResponse.results!.length,
+      itemBuilder: (context, index) {
+        return _buildPeopleItem(context, peopleResponse.results![index], index);
+      });
   }
 
-  Widget _buildPeopleItem(BuildContext context, People people) {
+  Widget _buildPeopleItem(BuildContext context, People people, int index) {
     return GestureDetector(
-        onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => PeopleDetailScreen(peopleItem: people),
-            ),
-          );
-        },
-        child: Text(people.name!));
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => PeopleDetailScreen(peopleItem: people),
+          ),
+        );
+      },
+      child: Column(
+        
+        children: [
+        
+        Container(
+          padding: const EdgeInsets.only(right: 20.0),
+          child:ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image(
+              image: NetworkImage('https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg'),
+              width: 210,
+              height: 400,
+              fit: BoxFit.cover,
+            )
+          ),
+        ),
+
+        Text(people.name!, 
+          style: const TextStyle(
+            color: Colors.white
+          ),
+        )
+  
+        ],
+      )
+    );
   }
 
 }
