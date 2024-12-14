@@ -14,7 +14,7 @@ class SearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return const TextField(
       decoration: InputDecoration(
-        labelStyle: TextStyle(color: Colors.black), // Color del texto
+        labelStyle: TextStyle(fontSize: 20, color: Color.fromARGB(255, 117, 117, 117)), // Color del texto
         filled: true,
         fillColor: Colors.white, // Color de fondo blanco
         border: OutlineInputBorder(
@@ -22,7 +22,7 @@ class SearchBar extends StatelessWidget {
           borderSide: BorderSide.none, // Elimina el borde predeterminado
         ),
         prefixIcon: Icon(Icons.search, color: Colors.black), // Icono de búsqueda
-        contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0), // Reduce la altura
+        contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 5.0), // Reduce la altura
       ),
     );
   }
@@ -60,9 +60,9 @@ class _PeopleScreenState extends State<PeopleScreen> {
           
           children: [
 
-            const Padding(
-              padding: EdgeInsets.only(left: 30.0, bottom: 5.0),
-              child: Text("Buscar",
+            Container(
+              padding: const EdgeInsets.only(left: 30.0, bottom: 5.0),
+              child: const Text("Buscar",
                 style: TextStyle(
                   fontSize: 35,
                   color: Colors.white,
@@ -71,9 +71,38 @@ class _PeopleScreenState extends State<PeopleScreen> {
               ),
             ),
 
-            const Padding(
-              padding: EdgeInsets.only(left: 30.0, right: 30.0, bottom: 30.0),
-              child: SearchBar(),
+            Container(
+              padding: const EdgeInsets.only(left: 30.0, right: 30.0, bottom: 30.0),
+              child: const SearchBar(),
+            ),
+
+            Container(
+              padding: const EdgeInsets.only(left: 30.0, bottom: 10.0),
+              child: const Text('PERSONAJES',
+                style: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 24, 23, 23),
+                  shadows: [
+                    Shadow( // Sombra para simular el borde
+                      offset: Offset(-1.5, -1.5),
+                      color: Color.fromARGB(255, 249, 230, 15),
+                    ),
+                    Shadow(
+                      offset: Offset(1.5, -1.5),
+                      color: Color.fromARGB(255, 249, 230, 15),
+                    ),
+                    Shadow(
+                      offset: Offset(1.5, 1.5),
+                      color: Color.fromARGB(255, 249, 230, 15),
+                    ),
+                    Shadow(
+                      offset: Offset(-1.5, 1.5),
+                      color: Color.fromARGB(255, 249, 230, 15),
+                    ),
+                  ],
+                ),
+              ),
             ),
 
             Expanded(
@@ -124,20 +153,6 @@ class _PeopleScreenState extends State<PeopleScreen> {
     }
   }
 
-  /*Widget _buildPeopleList(PeopleResponse peopleResponse) {
-    return ListView.builder(
-      scrollDirection: Axis.horizontal,
-      itemCount: peopleResponse.results!.length,
-      itemBuilder: (context, index) {
-        return Text(
-          peopleResponse.results![index].name!,
-          style: const TextStyle(
-            color: Colors.white
-          ),
-          );
-      },
-    );
-  }*/
   Widget _buildPeopleList(BuildContext context, PeopleResponse peopleResponse) {
     return ListView.builder(
       scrollDirection: Axis.horizontal,
@@ -152,33 +167,46 @@ class _PeopleScreenState extends State<PeopleScreen> {
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => PeopleDetailScreen(peopleItem: people),
+            builder: (context) => PeopleDetailScreen(peopleItem: people, indexDetail: index),
           ),
         );
       },
       child: Column(
-        
         children: [
-        
+      
         Container(
-          padding: const EdgeInsets.only(right: 20.0),
-          child:ClipRRect(
+          margin: const EdgeInsets.only(right: 20.0),
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 4.0,
+              color: const Color.fromARGB(255, 249, 230, 15),
+            ),
             borderRadius: BorderRadius.circular(20),
-            child: Image(
-              image: NetworkImage('https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg'),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.network(
+              'https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg',
               width: 210,
               height: 400,
               fit: BoxFit.cover,
-            )
+            ),
           ),
         ),
 
-        Text(people.name!, 
-          style: const TextStyle(
-            color: Colors.white
-          ),
+        Container(
+          margin: const EdgeInsets.only(top: 10.0),
+          padding: const EdgeInsets.only(right: 18.0),
+          child: Text(people.name!.toUpperCase(), 
+          textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.w900
+            ),
+          )
         )
-  
+
         ],
       )
     );
