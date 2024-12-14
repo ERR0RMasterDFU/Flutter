@@ -31,7 +31,7 @@ class _PeopleDetailScreenState extends State<PeopleDetailScreen> {
         color: const Color.fromARGB(255, 24, 23, 23),
         width: double.infinity,
         height: double.infinity,
-        padding: const EdgeInsets.only(top: 30.0, bottom: 20.0),
+        padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
 
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -60,45 +60,165 @@ class _PeopleDetailScreenState extends State<PeopleDetailScreen> {
             ),
 
             Container(
-              margin: const EdgeInsets.only(top: 20.0, left: 40.0, right: 40.0),
-              child: SizedBox(
-                height: 200,
-                child: ListView(
-                  children: [
-                    Column(
-                      children: [
-                        Text(
-                          "Fecha de Nacimiento: ${widget.peopleItem.birthYear}",
-                          style: const TextStyle(fontSize: 20, color: Colors.white),
+              margin: const EdgeInsets.only(top: 25.0, right: 40.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+
+                  RichText(
+                    textAlign: TextAlign.start,
+                    text: TextSpan(text: "Fecha de Nacimiento: ",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      children:[
+                        TextSpan(text: widget.peopleItem.birthYear,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal
+                          )
                         ),
-                        Text(
-                          "Altura: ${widget.peopleItem.height}",
-                          style: const TextStyle(fontSize: 20, color: Colors.white),
+                      ] 
+                    )
+                  ),
+
+                  const SizedBox(height: 8),
+
+                  RichText(
+                    textAlign: TextAlign.start,
+                    text: TextSpan(text: "Altura: ",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      children:[
+                        TextSpan(text: "${widget.peopleItem.height} cm",
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal
+                          )
                         ),
-                        Text(
-                          "Peso: ${widget.peopleItem.mass}",
-                          style: const TextStyle(fontSize: 20, color: Colors.white),
+                      ] 
+                    )
+                  ),
+
+                  const SizedBox(height: 8),
+
+                  RichText(
+                    textAlign: TextAlign.start,
+                    text: TextSpan(text: "Peso: ",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      children:[
+                        TextSpan(text: "${widget.peopleItem.mass} Kg" ,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal
+                          )
                         ),
-                        Text(
-                          "Género: ${widget.peopleItem.gender}",
-                          style: const TextStyle(fontSize: 20, color: Colors.white),
+                      ] 
+                    )
+                  ),             
+
+                  const SizedBox(height: 8),
+
+                  RichText(
+                    textAlign: TextAlign.start,
+                    text: TextSpan(text: "Género: ",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      children:[
+                        TextSpan(text: widget.peopleItem.gender,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal
+                          )
                         ),
-                        Text(
-                          "Color de ojos: ${widget.peopleItem.eyeColor}",
-                          style: const TextStyle(fontSize: 20, color: Colors.white),
+                      ] 
+                    )
+                  ),
+
+                  const SizedBox(height: 8),
+
+                  RichText(
+                    textAlign: TextAlign.start,
+                    text: TextSpan(text: "Color de ojos: ",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      children:[
+                        TextSpan(text: widget.peopleItem.eyeColor,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal
+                          )
                         ),
-                        Text(
-                          "Color de pelo: ${widget.peopleItem.hairColor}",
-                          style: const TextStyle(fontSize: 20, color: Colors.white),
+                      ] 
+                    )
+                  ),
+
+                  const SizedBox(height: 8),
+
+                  RichText(
+                    textAlign: TextAlign.start,
+                    text: TextSpan(text: "Color de pelo: ",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      children:[
+                        TextSpan(text: widget.peopleItem.hairColor,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal
+                          )
                         ),
-                        Text(
-                          "Color de piel: ${widget.peopleItem.skinColor}",
-                          style: const TextStyle(fontSize: 20, color: Colors.white),
+                      ] 
+                    )
+                  ),
+
+                  const SizedBox(height: 8),
+
+                  RichText(
+                    textAlign: TextAlign.start,
+                    text: TextSpan(text: "Color de piel: ",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      children:[
+                        TextSpan(text: widget.peopleItem.skinColor,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal
+                          )
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ] 
+                    )
+                  ),
+
+                ],
+                
               ),
             ),
 
