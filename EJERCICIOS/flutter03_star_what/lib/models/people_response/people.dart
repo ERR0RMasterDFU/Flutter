@@ -99,3 +99,41 @@ class People {
   /// Converts [People] to a JSON string.
   String toJson() => json.encode(toMap());
 }
+
+/*import 'dart:convert';
+
+class People {
+  String? uid;
+  String? name;
+  String? url;
+
+  People({
+    this.uid,
+    this.name,
+    this.url,
+  });
+
+  factory People.fromMap(Map<String, dynamic> data) => People(
+        uid: data['id'] as String?,
+        name: data['name'] as String?,
+        url: data['url'] as String?,
+      );
+
+  Map<String, dynamic> toMap() => {
+        'id': uid,
+        'name': name,
+        'url': url,
+      };
+
+  /// `dart:convert`
+  ///
+  /// Parses the string and returns the resulting Json object as [People].
+  factory People.fromJson(String data) {
+    return People.fromMap(json.decode(data) as Map<String, dynamic>);
+  }
+
+  /// `dart:convert`
+  ///
+  /// Converts [People] to a JSON string.
+  String toJson() => json.encode(toMap());
+}*/

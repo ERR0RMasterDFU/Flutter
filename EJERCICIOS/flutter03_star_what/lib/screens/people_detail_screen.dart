@@ -33,199 +33,203 @@ class _PeopleDetailScreenState extends State<PeopleDetailScreen> {
         height: double.infinity,
         padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
 
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: ListView(
           
           children: [
 
-            Container(
-              margin: const EdgeInsets.only(left: 30.0, right: 30.0),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 4.0,
-                  color: const Color.fromARGB(255, 249, 230, 15),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+
+              children: [
+
+                Container(
+                  margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 4.0,
+                      color: const Color.fromARGB(255, 249, 230, 15),
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.network(
+                      'https://starwars-visualguide.com/assets/img/characters/${widget.indexDetail + 1}.jpg',
+                      width: 310,
+                      height: 500,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: Image.network(
-                  'https://starwars-visualguide.com/assets/img/characters/${widget.indexDetail + 1}.jpg',
-                  width: 310,
-                  height: 500,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
 
-            Container(
-              margin: const EdgeInsets.only(top: 25.0, right: 40.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                Container(
+                  margin: const EdgeInsets.only(top: 25.0, right: 40.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
 
-                  RichText(
-                    textAlign: TextAlign.start,
-                    text: TextSpan(text: "Fecha de Nacimiento: ",
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      children:[
-                        TextSpan(text: widget.peopleItem.birthYear,
+                      RichText(
+                        textAlign: TextAlign.start,
+                        text: TextSpan(text: "Fecha de Nacimiento: ",
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
-                            fontWeight: FontWeight.normal
-                          )
-                        ),
-                      ] 
-                    )
-                  ),
-
-                  const SizedBox(height: 8),
-
-                  RichText(
-                    textAlign: TextAlign.start,
-                    text: TextSpan(text: "Altura: ",
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          children:[
+                            TextSpan(text: widget.peopleItem.birthYear,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal
+                              )
+                            ),
+                          ] 
+                        )
                       ),
-                      children:[
-                        TextSpan(text: "${widget.peopleItem.height} cm",
+
+                      const SizedBox(height: 8),
+
+                      RichText(
+                        textAlign: TextAlign.start,
+                        text: TextSpan(text: "Altura: ",
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
-                            fontWeight: FontWeight.normal
-                          )
-                        ),
-                      ] 
-                    )
-                  ),
-
-                  const SizedBox(height: 8),
-
-                  RichText(
-                    textAlign: TextAlign.start,
-                    text: TextSpan(text: "Peso: ",
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          children:[
+                            TextSpan(text: "${widget.peopleItem.height} cm",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal
+                              )
+                            ),
+                          ] 
+                        )
                       ),
-                      children:[
-                        TextSpan(text: "${widget.peopleItem.mass} Kg" ,
+
+                      const SizedBox(height: 8),
+
+                      RichText(
+                        textAlign: TextAlign.start,
+                        text: TextSpan(text: "Peso: ",
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
-                            fontWeight: FontWeight.normal
-                          )
-                        ),
-                      ] 
-                    )
-                  ),             
+                            fontWeight: FontWeight.bold,
+                          ),
+                          children:[
+                            TextSpan(text: "${widget.peopleItem.mass} Kg" ,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal
+                              )
+                            ),
+                          ] 
+                        )
+                      ),             
 
-                  const SizedBox(height: 8),
+                      const SizedBox(height: 8),
 
-                  RichText(
-                    textAlign: TextAlign.start,
-                    text: TextSpan(text: "Género: ",
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      children:[
-                        TextSpan(text: widget.peopleItem.gender,
+                      RichText(
+                        textAlign: TextAlign.start,
+                        text: TextSpan(text: "Género: ",
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
-                            fontWeight: FontWeight.normal
-                          )
-                        ),
-                      ] 
-                    )
-                  ),
-
-                  const SizedBox(height: 8),
-
-                  RichText(
-                    textAlign: TextAlign.start,
-                    text: TextSpan(text: "Color de ojos: ",
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          children:[
+                            TextSpan(text: widget.peopleItem.gender,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal
+                              )
+                            ),
+                          ] 
+                        )
                       ),
-                      children:[
-                        TextSpan(text: widget.peopleItem.eyeColor,
+
+                      const SizedBox(height: 8),
+
+                      RichText(
+                        textAlign: TextAlign.start,
+                        text: TextSpan(text: "Color de ojos: ",
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
-                            fontWeight: FontWeight.normal
-                          )
-                        ),
-                      ] 
-                    )
-                  ),
-
-                  const SizedBox(height: 8),
-
-                  RichText(
-                    textAlign: TextAlign.start,
-                    text: TextSpan(text: "Color de pelo: ",
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          children:[
+                            TextSpan(text: widget.peopleItem.eyeColor,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal
+                              )
+                            ),
+                          ] 
+                        )
                       ),
-                      children:[
-                        TextSpan(text: widget.peopleItem.hairColor,
+
+                      const SizedBox(height: 8),
+
+                      RichText(
+                        textAlign: TextAlign.start,
+                        text: TextSpan(text: "Color de pelo: ",
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
-                            fontWeight: FontWeight.normal
-                          )
-                        ),
-                      ] 
-                    )
-                  ),
-
-                  const SizedBox(height: 8),
-
-                  RichText(
-                    textAlign: TextAlign.start,
-                    text: TextSpan(text: "Color de piel: ",
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          children:[
+                            TextSpan(text: widget.peopleItem.hairColor,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal
+                              )
+                            ),
+                          ] 
+                        )
                       ),
-                      children:[
-                        TextSpan(text: widget.peopleItem.skinColor,
+
+                      const SizedBox(height: 8),
+
+                      RichText(
+                        textAlign: TextAlign.start,
+                        text: TextSpan(text: "Color de piel: ",
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
-                            fontWeight: FontWeight.normal
-                          )
-                        ),
-                      ] 
-                    )
-                  ),
+                            fontWeight: FontWeight.bold,
+                          ),
+                          children:[
+                            TextSpan(text: widget.peopleItem.skinColor,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal
+                              )
+                            ),
+                          ] 
+                        )
+                      ),
 
-                ],
+                    ]
+                  )
+                )
+              ]
                 
-              ),
-            ),
-
-          ],
-
+            )
+          ]
         ),
-      ),
+      )
     );
   }
 }
