@@ -6,28 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter04_navegation_bar/models/series/series_response.dart';
 import 'package:http/http.dart' as http;
 
-/*class SearchBar extends StatelessWidget {
-  const SearchBar({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const TextField(
-      decoration: InputDecoration(
-        labelStyle: TextStyle(fontSize: 20, color: Color.fromARGB(255, 117, 117, 117)), // Color del texto
-        filled: true,
-        fillColor: Colors.white, // Color de fondo blanco
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(30.0)),
-          borderSide: BorderSide.none, // Elimina el borde predeterminado
-        ),
-        prefixIcon: Icon(Icons.search, color: Colors.black), // Icono de búsqueda
-        contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 5.0), // Reduce la altura
-      ),
-    );
-  }
-}*/
-
-class SeriesScreen extends /*StatelessWidget*/ StatefulWidget {
+class SeriesScreen extends StatefulWidget {
   const SeriesScreen({super.key});
 
   @override
@@ -49,9 +29,15 @@ class _SeriesScreenState extends State<SeriesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /*appBar: AppBar(
-        //title: const Text('People'),
-      ),^*/
+      appBar: AppBar(
+        title: const Text('SERIES', 
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold
+          )
+        ),
+        backgroundColor: Colors.blue
+      ),
       body: FutureBuilder<SeriesListResponse>(
         future: seriesList,
         builder: (context, snapshot) {
@@ -72,15 +58,62 @@ class _SeriesScreenState extends State<SeriesScreen> {
     if (response.statusCode == 200) {
       return SeriesListResponse.fromJson(json.decode(response.body) as Map<String, dynamic>);
     } else {
-      throw Exception('Failed to load album');
+      throw Exception('Fallo al cargar la página');
     }
   }
 
   Widget _buildSeriesList(SeriesListResponse seriesResponse) {
-    return ListView.builder(
-        itemCount: seriesResponse.results!.length,
-        itemBuilder: (context, index) {
-          return Text(seriesResponse.results![index].name!);
-        });
+    return GridView.builder(
+      padding: const EdgeInsets.only(top: 30, bottom: 35, right: 15, left: 15),
+
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 30, 
+        crossAxisSpacing: 15, 
+        childAspectRatio: 0.7
+      ),
+      itemCount: seriesResponse.results!.length,
+      itemBuilder: (context, index) {
+
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+
+          children: [
+
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: AspectRatio(
+                aspectRatio: 0.83,
+                child: Image.network(
+                  'https://image.tmdb.org/t/p/original/${seriesResponse.results![index].posterPath}', 
+                ),
+              ),
+            ),
+
+            Container(
+              margin: const EdgeInsets.only(top: 7,),
+              padding: const EdgeInsets.only(top: 7, bottom: 7, right: 11, left: 11),
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Text(
+                seriesResponse.results![index].name!.toUpperCase(),
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+            ),
+
+          ],
+
+        );
+      },
+    );
   }
+
 }

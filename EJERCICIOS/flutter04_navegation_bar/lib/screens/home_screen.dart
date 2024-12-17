@@ -5,41 +5,29 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      /*children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-          child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-            CircleAvatar(
-              backgroundImage: NetworkImage(
-                  'https://avatars.githubusercontent.com/u/22224851?v=4'),
-            ),
-            Text(
-              'brrrr1woman',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            Text('·'),
-            Text('Follow'),
-          ]),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('PRINCIPAL', 
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold
+          )
         ),
-        SizedBox(
-          width: double.infinity,
-          height: 300,
-          child: Image.network(
-            'https://media.istockphoto.com/id/1209988354/photo/young-man-skateboarding-in-los-angeles.jpg',
-            fit: BoxFit.cover,
-          ),
-        ),
-        const Row(
-          children: [],
-        ),
-        const Row(
-          children: [],
-        ),
-        const Row(
-          children: [],
-        ),
-      ],*/
+        backgroundColor: Colors.blue
+      ),
+      /*body: FutureBuilder<SeriesListResponse>(
+        future: seriesList,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return _buildSeriesList(snapshot.data!);
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error}');
+          }
+          // By default, show a loading spinner.
+          return const Center(child: CircularProgressIndicator());
+        },
+      ),*/
     );
   }
+
 }
